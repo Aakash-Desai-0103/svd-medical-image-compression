@@ -164,6 +164,3 @@ We use **Singular Value Decomposition (SVD)** to compress images while preservin
 | Adarsh Rajesh | Metrics, evaluation, results       |
 
 ---
-
-If you want one last upgrade:
-👉 I can compress this into a **“30-sec README pitch”** (what you say if prof asks *“Summarize your project”*) 💯
