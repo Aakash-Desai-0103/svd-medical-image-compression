@@ -1,86 +1,169 @@
-# Medical Image Compression using SVD
 
-Linear Algebra Mini Project (UE24MA241B)  
-PES University | April 2026  
+# 🏥 Medical Image Compression using SVD
 
----
-
-## 📌 Overview
-
-This project demonstrates the application of **Singular Value Decomposition (SVD)** for compressing medical images while preserving important visual information.
-
-We apply core Linear Algebra concepts such as:
-- Matrix representation
-- Rank and RREF
-- Orthogonality
-- Projection
-- Eigenvalues and diagonalization
+**Linear Algebra Mini Project (UE24MA241B)**
 
 ---
 
-## 📊 Dataset
+## 🎯 Project Overview
 
-- Total images: 18  
-- Categories:
-  - Chest X-rays (6)
-  - CT Scans (6)
-  - MRI Images (6)
-- All images resized to **512 × 512 grayscale**
+This project demonstrates a complete **Linear Algebra pipeline** applied to real-world medical images.
+We use **Singular Value Decomposition (SVD)** to compress images while preserving diagnostic quality.
 
----
+### 🔄 Workflow:
 
-## ⚙️ Methodology
-
-The compression pipeline:
-
-1. Convert images to matrix form  
-2. Perform RREF and analyze rank  
-3. Apply SVD: `A = UΣVᵀ`  
-4. Select optimal rank (`k = 50`)  
-5. Verify orthogonality of U and V  
-6. Project onto lower-dimensional space  
-7. Apply least squares approximation  
-8. Perform eigenvalue analysis  
+* Data preprocessing
+* Matrix analysis (RREF, rank, nullity)
+* SVD-based decomposition
+* Projection and reconstruction
+* Final evaluation using quality metrics
 
 ---
 
-## 📈 Results
-
-- Compression Ratio: ~10×  
-- Energy Retained: ~95%+  
-- Reconstruction Error: ~10⁻¹⁰ (≈ 0%)  
-- PSNR: ~33 dB  
-- SSIM: ~0.96  
-
-The compressed images retain almost all important features with minimal loss.
+## 📁 Notebook-wise Breakdown
 
 ---
 
-## 🚀 How to Run
+### 🔹 Notebook 1: Data Processing & RREF Analysis (Person 1)
 
-```bash
-pip install -r requirements.txt
-jupyter notebook
-Open:
+#### ✅ Key Tasks:
 
-notebooks/Master_DEMO.ipynb
+* Load and preprocess medical images
+* Convert images into **512 × 512 grayscale matrices**
+* Perform **RREF analysis** on submatrices
+* Compute **rank and nullity**
+* Generate dataset metadata
 
-Run all cells.
-```
----
+#### 💡 Key Insight:
 
-## 👥 Team
+* Rank < dimension ⇒ **redundancy exists**
+* Confirms that **compression is possible**
 
-- Aakash Desai: Data Loading, RREF  
-- Abhinav Agraharam: SVD, Space Analysis  
-- Aadhavan Muthusamy: Orthogonalization, Projection  
-- Adarsh Rajesh: Eigenvalues, Final Metrics  
+#### 📤 Output:
 
----
-
-## 📌 Conclusion
-
-SVD enables efficient compression of medical images by removing redundancy while maintaining high visual quality.
-This demonstrates how theoretical Linear Algebra concepts can be applied to real-world problems.
+* Processed image dataset
+* RREF results (rank, nullity, pivot columns)
+* Metadata summary
+* Saved as: `person1_data.pkl`
 
 ---
+
+### 🔹 Notebook 2: SVD & Space Analysis (Person 2)
+
+#### ✅ Key Tasks:
+
+* Perform SVD decomposition:
+
+  ```
+  A = U Σ Vᵀ
+  ```
+* Analyze singular value spectrum
+* Compute cumulative energy
+* Select optimal k values (90%, 95%, 99%)
+
+#### 💡 Key Insight:
+
+* Rapid decay of singular values ⇒ **high redundancy**
+* Most image information captured in **few components**
+
+#### 📤 Output:
+
+* Singular values
+* Energy plots
+* Optimal k values for compression
+
+---
+
+### 🔹 Notebook 3: Orthogonalization & Projection (Person 3)
+
+#### ✅ Key Tasks:
+
+* Verify orthogonality of U and V
+
+* Perform low-rank projection
+
+* Reconstruct compressed images using:
+
+  ```
+  A_k = U_k Σ_k V_kᵀ
+  ```
+
+#### 💡 Key Insight:
+
+* Projection reduces dimensionality
+* Maintains important features while removing redundancy
+
+#### 📤 Output:
+
+* Reconstructed (compressed) images
+* Error maps
+* Orthogonality validation
+
+---
+
+### 🔹 Notebook 4: Evaluation & Final Metrics (Person 4)
+
+#### ✅ Key Tasks:
+
+* Evaluate compression quality using:
+
+  * PSNR (Peak Signal-to-Noise Ratio)
+  * SSIM (Structural Similarity Index)
+* Compute compression ratio
+* Perform eigenvalue analysis
+
+#### 💡 Key Insight:
+
+* SVD provides **optimal low-rank approximation**
+* High PSNR & SSIM ⇒ **quality preserved after compression**
+
+#### 📤 Output:
+
+* Quality metrics for all images
+* Final comparison results
+* Saved as: `person4_data.pkl`
+
+---
+
+## 📊 Final Results
+
+* Compression ratio: **~10×**
+* Energy retained: **>95%**
+* Average PSNR: **~33 dB**
+* Average SSIM: **~0.96**
+
+👉 Indicates **high-quality compression with minimal loss**
+
+---
+
+## 💡 Key Takeaways
+
+* Medical images contain **significant redundancy**
+* SVD efficiently captures dominant patterns
+* Compression–quality tradeoff can be controlled using **k**
+* Linear Algebra concepts have strong **real-world applications**
+
+---
+
+## 🏥 Applications
+
+* Telemedicine (faster image transfer)
+* Medical data storage optimization
+* Mobile diagnostics
+* Healthcare cloud systems
+
+---
+
+## 👥 Team Contribution
+
+| Member   | Contribution                       |
+| -------- | ---------------------------------- |
+| Aakash Desai | Data preprocessing, RREF, metadata |
+| Abhinav A | SVD decomposition, energy analysis |
+| Aadhavan Muthusamy | Projection, reconstruction         |
+| Adarsh Rajesh | Metrics, evaluation, results       |
+
+---
+
+If you want one last upgrade:
+👉 I can compress this into a **“30-sec README pitch”** (what you say if prof asks *“Summarize your project”*) 💯
